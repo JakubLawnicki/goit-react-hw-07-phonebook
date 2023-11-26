@@ -1,0 +1,23 @@
+.button {
+  color: white;
+  background-color: #1c8000;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: greenyellow;
+  color: black;
+}
+.contact {
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-list {
+  list-style: none;
+  gap: 20px;
+  width: 500px;
+}
