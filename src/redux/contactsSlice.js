@@ -8,7 +8,7 @@ import { fetchContacts } from './operations';
 //   return JSON.parse(localStorage.getItem('contacts'));
 // };
 const contactsInitState = {
-  contacts: [],
+  contactsList: [],
   isLoading: false,
   error: null,
 };
@@ -20,7 +20,7 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, state => (state.isLoading = true))
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts = action.payload;
+        state.contactsList = action.payload;
         state.isLoading = false;
         state.error = null;
       })

@@ -1,30 +1,33 @@
 import styles from './contactForm.module.css';
-import { nanoid } from 'nanoid';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+// import { nanoid } from 'nanoid';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { addContact } from 'redux/contactsSlice';
 
 export function ContactForm() {
-  const id = nanoid();
-  const contacts = useSelector(state => state.contacts);
-  const dispatch = useDispatch();
-  const form = document.querySelector('form');
+  // const id = nanoid();
+  // const contacts = useSelector(state => state.contacts);
+  // const dispatch = useDispatch();
+  // const form = document.querySelector('form');
 
   let name;
   let number;
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    for (const contact of contacts) {
-      if (contact.name.toLowerCase() === name.toLowerCase()) {
-        return alert(contact.name + ' is already in contacts.');
-      }
-    }
-    dispatch(addContact(name, number, id));
-    form.reset();
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   for (const contact of contacts) {
+  //     if (contact.name.toLowerCase() === name.toLowerCase()) {
+  //       return alert(contact.name + ' is already in contacts.');
+  //     }
+  //   }
+  //   dispatch(addContact(name, number, id));
+  //   form.reset();
+  // };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={styles.form}
+      // onSubmit={handleSubmit}
+    >
       <label className={styles.label} htmlFor="name">
         Name
       </label>
