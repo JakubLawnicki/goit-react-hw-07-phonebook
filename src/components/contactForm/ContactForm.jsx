@@ -1,40 +1,49 @@
+import { addContact } from 'redux/operations';
 import styles from './contactForm.module.css';
 // import { nanoid } from 'nanoid';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 // import { addContact } from 'redux/contactsSlice';
 
 export function ContactForm() {
   // const id = nanoid();
-  // const contacts = useSelector(state => state.contacts);
-  // const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.contactsList);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const dispatch = useDispatch();
   // const form = document.querySelector('form');
 
-  let name;
-  let number;
+  // let name;
+  // let phone;
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   for (const contact of contacts) {
-  //     if (contact.name.toLowerCase() === name.toLowerCase()) {
-  //       return alert(contact.name + ' is already in contacts.');
-  //     }
-  //   }
-  //   dispatch(addContact(name, number, id));
-  //   form.reset();
-  // };
+  const newContact = {
+    name,
+    phone,
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { name, phone } = newContact;
+    const form = e.target;
+    for (const contact of contacts) {
+      if (contact.name.toLowerCase() === name.toLowerCase()) {
+        return alert(contact.name + ' is already in contacts.');
+      }
+    }
+
+    dispatch(addContact({ name, phone }));
+    form.reset();
+  };
 
   return (
-    <form
-      className={styles.form}
-      // onSubmit={handleSubmit}
-    >
+    <form className={styles.form} onSubmit={handleSubmit} id="form">
       <label className={styles.label} htmlFor="name">
         Name
       </label>
       <input
         className={styles['input-name']}
         onChange={e => {
-          name = e.target.value;
+          setName(e.target.value);
         }}
         type="text"
         name="name"
@@ -50,12 +59,12 @@ export function ContactForm() {
       <input
         className={styles['input-tel']}
         onChange={e => {
-          number = e.target.value;
+          setPhone(e.target.value);
         }}
         type="tel"
-        name="number"
-        id="number"
-        value={number}
+        name="phone"
+        id="phone"
+        value={phone}
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
