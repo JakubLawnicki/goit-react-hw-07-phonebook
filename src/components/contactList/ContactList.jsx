@@ -19,7 +19,7 @@ export function ContactList() {
         {contacts.map(item => (
           <li className={styles.contact} key={item.id}>
             <p>
-              {item.name}: {item.number}
+              {item.name}: {item.phone}
             </p>
             <button
               type="button"
