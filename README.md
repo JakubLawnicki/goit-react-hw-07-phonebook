@@ -9,6 +9,7 @@ with names and phone numbers. Filtering contacts by name is also available.
 
 - React
 - Redux Toolkit
+- Mockapi for backend
 
 ## Setup
 
