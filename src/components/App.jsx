@@ -6,13 +6,9 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 export function App() {
-  // const contacts = useSelector(state => state.contacts);
   const isLoading = useSelector(state => state.contacts.isLoading);
   const error = useSelector(state => state.contacts.error);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   useEffect(() => {
     dispatch(fetchContacts());
