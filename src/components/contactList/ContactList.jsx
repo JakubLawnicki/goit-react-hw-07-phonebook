@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/operations';
 // import { deleteContact } from 'redux/contactsSlice';
 import styles from './contactList.module.css';
 
 export function ContactList() {
   const contacts = useSelector(state => state.contacts.contactsList);
   const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
 
-  // const handleClick = itemId => {
-  //   dispatch(deleteContact(itemId));
-  // };
+  const handleClick = itemId => {
+    dispatch(deleteContact(itemId));
+  };
 
   if (contacts === null) {
     return <p>There are no contacts</p>;
@@ -26,7 +28,7 @@ export function ContactList() {
               className={styles.button}
               id={item.id}
               onClick={() => {
-                // handleClick(item.id);
+                handleClick(item.id);
               }}
             >
               Delete
