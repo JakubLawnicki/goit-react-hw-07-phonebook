@@ -44,14 +44,26 @@ export function ContactList() {
   contacts.forEach(contact => {
     if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
       dispName = contact.name;
-      dispNumber = contact.number;
+      dispNumber = contact.phone;
       id = contact.id;
     }
   });
   return (
     <ul className={styles['contact-list']}>
       <li className={styles.contact} key={id}>
-        {dispName}: {dispNumber}
+        <p>
+          {dispName}: {dispNumber}
+        </p>
+        <button
+          type="button"
+          className={styles.button}
+          id={id}
+          onClick={() => {
+            handleClick(id);
+          }}
+        >
+          Delete
+        </button>
       </li>
     </ul>
   );
